@@ -1,3 +1,4 @@
+import { useModal } from "@/components/ModalContext";
 import { Box, Button, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import "swiper/css";
@@ -6,7 +7,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-export const CardTeacher = ({
+
+export const CardBanner = ({
   title,
   image,
   desc
@@ -16,6 +18,8 @@ export const CardTeacher = ({
   image: string;
 
 }) => {
+  const { isOpen, onOpen, onClose } = useModal();
+
   return (
     <Box>
       <Image
@@ -23,18 +27,21 @@ export const CardTeacher = ({
         src={image}
         alt={title}
         width={"100%"}
-        height={{ lg:"auto", base:"800px"}}
+        objectFit={"cover"}
+        height={{ lg: "800", base: "800px" }}
       />
       <ImageOverlay />
-      <SimpleGrid flexDirection={"column"} pos={"absolute"} top={{ lg:"200px" , base:"25%"}} left={{lg:"105px", base:"5px", md:"15px"}} maxW={"900px"} spacing={5} >
-        <Heading fontSize={{lg:"47px", base:"32px"}} color={"#fff"} lineHeight={"1.6em"}>{desc}</Heading>
-        <Text fontSize={"23px"} color={"#fff"} fontStyle={"italic"} >{title}</Text>
-      <Button style={{ background: "#fff",width:"230px", height:"45px", marginTop: "16px", fontWeight: "600" }} > TÌM HIỂU THÊM</Button>
+      <SimpleGrid flexDirection={"column"} pos={"absolute"} top={{ lg: "200px", base: "25%" }} left={{ lg: "105px", base: "5px", md: "15px" }} maxW={"900px"} spacing={5} >
+        <Heading fontSize={{ lg: "47px", base: "32px" }} color={"#fff"} lineHeight={"1.6em"}>{desc}</Heading>
+        <Text fontSize={{ lg: "23px", base: "16px" }} color={"#fff"} fontStyle={"italic"} >{title}</Text>
+
+        <Button style={{ background: "#fff", width: "230px", height: "45px", marginTop: "16px", fontWeight: "600" }} onClick={() => !isOpen && onOpen && onOpen()} > TÌM HIỂU THÊM</Button>
 
       </SimpleGrid>
 
     </Box>
   );
+
 };
 const SwiperContainer = styled.div`
 .swiper-button-next, .swiper-button-prev {
@@ -60,16 +67,43 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 `;
+const NavButton = styled.button`
+display: flex;
+width: 40px;
+height: 40px;
+border: none;
+    outline: none;
+    background-color: hsl(0, 0%, 100%);
+    color: #000000;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    &:hover {
+      background-color: hsl(
+        40.08298755186722,
+        96.7871485943775%,
+        48.82352941176471%
+      );
+      cursor: pointer;
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+`;
 export const Banner = () => {
   const teachers = [
     {
-      title: "Bạn có tò mò muốn biết trải nghiệm của bạn sẽ như thế nào với tư cách là một sinh viên Trường Đại học UMT?    ",
-      avt: `/banner-ptit.jpg`,
-      desc: `SỐNG TRỌN VẸN, TRẢI NGHIỆM THỜI SINH VIÊN VUI VẺ CỦA BẠN`
+      title: "Ứng dụng nền tảng Đại học số tiên tiến, Tuyển sinh liên tục, Xét duyệt hồ sơ dự tuyển, Bằng cấp tương đương hệ chính quy",
+      avt: `/banner1.PNG`,
+      desc: `ĐẠI HỌC TỪ XA`
     },
     {
       title: "Với hệ đào tạo từ xa PTIT, chương trình học được thiết kế theo quy chuẩn của Bộ GD&ĐT, đảm bảo cho học viên đầy đủ kiến thức chuyên môn và kinh nghiệm thực hành thực tế, thỏa sức theo đuổi đam mê.",
-      avt: `/bannerptit1.png`,
+      avt: `/banner2.jpg`,
       desc: `CÁC NGÀNH ĐÀO TẠO "HOT"`
     },
 
@@ -93,7 +127,7 @@ export const Banner = () => {
       >
         {teachers?.map((teacher, index) => (
           <SwiperSlide key={index} className="swiperSlide">
-            <CardTeacher
+            <CardBanner
               key={index}
               desc={teacher.desc}
               title={teacher.title}
@@ -102,6 +136,7 @@ export const Banner = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
     </SwiperContainer>
   );
 };

@@ -2,7 +2,7 @@
 import { FormMain } from "@/components/FormContact";
 
 import { FcBookmark } from "react-icons/fc";
-import{ Box, SimpleGrid,Stack,Heading,Divider,List,ListItem,ListIcon} from "@chakra-ui/react"
+import { Box, SimpleGrid, Stack, Heading, Divider, List, ListItem, ListIcon } from "@chakra-ui/react"
 export const IntroduceCntt = () => {
   const items = [
     {
@@ -24,7 +24,7 @@ export const IntroduceCntt = () => {
       >
         <Stack bg="White" height="full" padding={"24px"} >
           <Heading fontSize={{ base: "25px", md: "25px", lg: "32px" }} color={"#B1040E"}  >
-           Giới thiệu
+            Giới thiệu
           </Heading>
           <Divider
             borderBottomWidth={"3px"}
@@ -36,6 +36,7 @@ export const IntroduceCntt = () => {
             spacing={30}
             pt={{ lg: "15px", base: "15px" }}
             fontSize={{ base: "18px", lg: "21px", md: "md" }}
+            textAlign={"justify"}
           >
             {items.map((item, index) => (
               <ListItem key={index} mt={{ lg: "19px" }} maxW={{ lg: "950px", base: "auto" }}>
@@ -45,7 +46,7 @@ export const IntroduceCntt = () => {
             ))}
           </List>
         </Stack>
-        <Box mt={{lg:"47px"}}><FormMain title="Vui lòng điền thông tin"  /></Box>
+        <Box mt={{ lg: "47px" }}><FormMain title="Nhận tư vấn miễn phí" /></Box>
       </SimpleGrid>
     </Box>
   );
@@ -71,7 +72,7 @@ export const IntroduceKtdtvt = () => {
       >
         <Stack bg="White" height="full" padding={"24px"} >
           <Heading fontSize={{ base: "25px", md: "25px", lg: "32px" }} color={"#B1040E"}  >
-           Giới thiệu
+            Giới thiệu
           </Heading>
           <Divider
             borderBottomWidth={"3px"}
@@ -83,6 +84,8 @@ export const IntroduceKtdtvt = () => {
             spacing={30}
             pt={{ lg: "15px", base: "15px" }}
             fontSize={{ base: "18px", lg: "21px", md: "md" }}
+            textAlign={"justify"}
+
           >
             {items.map((item, index) => (
               <ListItem key={index} mt={{ lg: "19px" }} maxW={{ lg: "950px", base: "auto" }}>
@@ -92,7 +95,7 @@ export const IntroduceKtdtvt = () => {
             ))}
           </List>
         </Stack>
-        <Box mt={{lg:"47px"}}><FormMain title="Vui lòng điền thông tin"  /></Box>
+        <Box mt={{ lg: "47px" }}><FormMain title="ĐĂNG KÍ NGAY" /></Box>
       </SimpleGrid>
     </Box>
   );
@@ -118,7 +121,7 @@ export const IntroduceQtkd = () => {
       >
         <Stack bg="White" height="full" padding={"24px"} >
           <Heading fontSize={{ base: "25px", md: "25px", lg: "32px" }} color={"#B1040E"}  >
-           Giới thiệu
+            Giới thiệu
           </Heading>
           <Divider
             borderBottomWidth={"3px"}
@@ -130,6 +133,7 @@ export const IntroduceQtkd = () => {
             spacing={30}
             pt={{ lg: "15px", base: "15px" }}
             fontSize={{ base: "18px", lg: "21px", md: "md" }}
+            textAlign={"justify"}
           >
             {items.map((item, index) => (
               <ListItem key={index} mt={{ lg: "19px" }} maxW={{ lg: "950px", base: "auto" }}>
@@ -139,7 +143,7 @@ export const IntroduceQtkd = () => {
             ))}
           </List>
         </Stack>
-        <Box mt={{lg:"47px"}}><FormMain title="Vui lòng điền thông tin"  /></Box>
+        <Stack mt={{ lg: "47px" }} > <FormMain title="NHẬN LỘ TRÌNH HỌC CHI TIẾT" /></Stack>
       </SimpleGrid>
     </Box>
   );

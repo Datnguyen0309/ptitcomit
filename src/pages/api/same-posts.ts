@@ -28,14 +28,14 @@ export default async function handler(
       const postsWithFeaturedImages =
         relatedPosts?.length > 0
           ? relatedPosts?.map((post: any) => {
-            const featured_image =
-              post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+              const featured_image =
+                post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
 
-            return {
-              ...post,
-              featured_image,
-            };
-          })
+              return {
+                ...post,
+                featured_image,
+              };
+            })
           : [];
 
       samePosts = postsWithFeaturedImages;

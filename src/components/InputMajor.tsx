@@ -13,11 +13,11 @@ import {
 export const Item = ({
   title,
   desc,
-  image, 
+  image,
 }: {
   title: string;
   desc: string;
-  image?: string; 
+  image?: string;
 }) => {
   return (
     <Box
@@ -36,13 +36,13 @@ export const Item = ({
       boxShadow='md'
     >
       <Img
-        src={image || "/default-image.jpg"} 
+        src={image || "/default-image.jpg"}
         alt={title}
         w={"45px"}
         h={"45px"}
         mb={"8px"}
       />
-      <Heading as={"h2"} size={{ base: "md" }}  color={"#1E2456 "}>
+      <Heading as={"h2"} size={{ base: "md" }} color={"#1E2456 "}>
         {title}
       </Heading>
       <HStack spacing={"12px"} pt={"5px"}>
@@ -64,19 +64,19 @@ export const InputMajordtvts = [
   {
     title: "Thời gian đào tạo",
     desc: "2 - 4 năm",
-    image: "/icon-2.png", 
+    image: "/icon-2.png",
   },
   {
     title: "Bằng cấp",
     desc: "Kỹ sư Kỹ Thuật Điện Tử Viễn Thông",
-    image: "/icon-3.png", 
+    image: "/icon-3.png",
   },
   {
     title: "Tổ hợp môn xét tuyển",
     desc: "A00, A01",
-    image: "/icon-4.png", 
+    image: "/icon-4.png",
   },
-  
+
 ];
 export const InputMajordtvt = () => {
   return (
@@ -89,7 +89,7 @@ export const InputMajordtvt = () => {
               key={index}
               title={major.title}
               desc={major.desc}
-              image={major.image} 
+              image={major.image}
             />
           ))}
         </SimpleGrid>
@@ -105,18 +105,18 @@ export const InputMajorcntts = [
   },
   {
     title: "Thời gian đào tạo",
-    desc: "2 - 4 năm",
-    image: "/icon-2.png", 
+    desc: "2 - 4.5 năm",
+    image: "/icon-2.png",
   },
   {
     title: "Bằng cấp",
     desc: "Kỹ sư Công nghệ thông tin",
-    image: "/icon-3.png", 
+    image: "/icon-3.png",
   },
   {
     title: "Tổ hợp môn xét tuyển",
     desc: " A00, A01",
-    image: "/icon-4.png", 
+    image: "/icon-4.png",
   },
 
 ];
@@ -131,7 +131,7 @@ export const InputMajorcntt = () => {
               key={index}
               title={major.title}
               desc={major.desc}
-              image={major.image} 
+              image={major.image}
             />
           ))}
         </SimpleGrid>
@@ -147,23 +147,18 @@ export const InputMajorqtkds = [
   },
   {
     title: "Thời gian đào tạo",
-    desc: "2-4 năm",
-    image: "/icon-2.png", 
+    desc: "2 - 4 năm",
+    image: "/icon-2.png",
   },
   {
     title: "Bằng cấp",
     desc: "Cử nhân Quản trị kinh doanh",
-    image: "/icon-3.png", 
+    image: "/icon-3.png",
   },
   {
     title: "Tổ hợp môn xét tuyển",
     desc: "A00, A01, D01",
-    image: "/icon-4.png", 
-  },
-  {
-    title: "Cơ sở học tập",
-    desc: "Trụ sở chính của UMT",
-    image: "/icon-5.png", 
+    image: "/icon-4.png",
   },
 ];
 export const InputMajorqtkd = () => {
@@ -171,13 +166,13 @@ export const InputMajorqtkd = () => {
     <Box>
       <Container maxW="1728px" >
 
-        <SimpleGrid pt={"24px"} columns={{ base: 2, md: 5 }} spacing={4} paddingTop={"30px"} pb={"48px"} >
+        <SimpleGrid pt={"24px"} columns={{ base: 2, md: 4 }} spacing={4} paddingTop={"30px"} pb={"48px"} >
           {InputMajorqtkds.map((major, index) => (
             <Item
               key={index}
               title={major.title}
               desc={major.desc}
-              image={major.image} 
+              image={major.image}
             />
           ))}
         </SimpleGrid>

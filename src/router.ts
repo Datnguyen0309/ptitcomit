@@ -9,27 +9,34 @@ export type TMenus = {
 export const menus = [
   {
     path: "/", // the url
-    title: "Trang chủ",
-  },
-  {
-    path: "/gioi-thieu", // the url
-    title: "Giới thiệu",
+    title: "TRANG CHỦ",
   },
 
   {
-    path: "/nganh-dao-tao", // the url
-    title: "Ngành đào tạo",
+    path: "/nganh-hoc", // the url
+    title: "NGÀNH HỌC",
+    childs: [
+      {
+        path: "/nganh-cong-nghe-thong-tin",
+        title: "Công nghệ thông tin",
+      },
+      {
+        path: "/nganh-ky-thuat-dien-tu-vien-thong",
+        title: "Kỹ thuật điện tử viễn thông",
+      },
+      {
+        path: "/nganh-quan-tri-kinh-doanh",
+        title: "Quản trị kinh doanh",
+      },
+    ],
   },
-  {
-    path: "/lich-khai-giang", // the url
-    title: "Lịch khai giảng",
-  },
+
   {
     path: "/tuyen-sinh", // the url
-    title: "Tuyển sinh",
+    title: "TUYỂN SINH",
   },
   {
     path: "/tin-tuc", // the url
-    title: "Tin tức", // view rendered
+    title: "TIN TỨC & SỰ KIỆN", // view rendered
   },
 ];

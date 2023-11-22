@@ -12,7 +12,7 @@ const linkStyles = {
 };
 
 export const RouterNganh = () => {
-  const [activeLink, setActiveLink] = useState('sectionIntroduce'); 
+  const [activeLink, setActiveLink] = useState('sectionIntroduce');
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
   };
@@ -23,7 +23,7 @@ export const RouterNganh = () => {
       bg={"linear-gradient(180deg, #fff 0, #f8f9fa 100%)"}
       position={"sticky"}
       top={0}
-      zIndex={10}
+      zIndex={4}
     >
       <Breadcrumb
         separator=""

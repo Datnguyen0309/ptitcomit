@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Image from 'next/image'
 import { BsFillMortarboardFill } from "react-icons/bs";
-import { MotionLeft, } from "@/components/MotionLeft";
+import { MotionRightLeft, } from "@/components/MotionLeft";
 
 export const items = [
   {
@@ -44,16 +44,18 @@ export const items = [
 export const Different = () => {
   return (
     <Box bg={"#f6f6f7"} py={{ base: "16", lg: "20" }}>
-      <MotionLeft>
+      <MotionRightLeft>
         <Container maxW={"1728px"} >
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} >
             <Flex>
               <Image
                 src={`/diffrent.jpg`}
                 width={2560}
-                height={1707 }
-                style={{ width: "100%" }}
-                objectFit={"cover"} alt={"Pitit"} />
+                height={1707}
+                style={{ width: "100%", objectFit: "cover" }}
+                alt={"Pitit"}
+              />
+
             </Flex>
 
             <Stack >
@@ -86,7 +88,7 @@ export const Different = () => {
             </Stack>
           </SimpleGrid>
         </Container>
-      </MotionLeft>
+      </MotionRightLeft>
     </Box>
   );
 };

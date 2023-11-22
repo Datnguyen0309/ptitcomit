@@ -1,5 +1,5 @@
 "use client";
-import { MotionTop} from "@/components/MotionTop";
+import { MotionTop } from "@/components/MotionTop";
 
 import {
   AspectRatio,
@@ -15,14 +15,15 @@ import {
 import { FcBookmark } from "react-icons/fc";
 export const Introduce = () => {
   return (
-  
-      <Box py={{ base: "16", lg:"20"}} >
-        <SimpleGrid
-          columns={{ base: 1, lg: 2 }}
-          maxW={"1728px"}
-          margin={"0 auto"}
-        >
-          <MotionTop>
+
+    <Box py={{ base: "16", lg: "20" }} >
+      <SimpleGrid
+        columns={{ base: 1, lg: 2 }}
+        maxW={"1728px"}
+        margin={"0 auto"}
+        spacing={"8"}
+      >
+        <MotionTop>
           <Stack bg="White" height="full" padding={"24px"}>
             <Heading
               fontSize={{ base: "22px", md: "md", lg: "23px" }}
@@ -43,29 +44,30 @@ export const Introduce = () => {
               spacing={30}
               pt={{ lg: "15px", base: "15px" }}
               fontSize={{ base: "18px", lg: "21px", md: "md" }}
+              textAlign={"justify"}
             >
               <ListItem mt={{ lg: "19px" }}>
                 <ListIcon as={FcBookmark} />
-                Học viện công nghệ bưu chính viễn thông là đơn vị sự nghiệp trực
+                Học viện Công nghệ Bưu chính Viễn thông là đơn vị sự nghiệp trực
                 thuộc Bộ thông tin và truyền thông. Với 2 cơ sở đào tạo tại Hà
                 Nội, TP. Hồ Chí Minh và 03 Viện nghiên cứu trong lĩnh vực ICT
               </ListItem>
               <ListItem>
                 <ListIcon as={FcBookmark} />
-                Sinh viên tốt nghiệp sẽ nhận bằng cử nhân (Bằng đại học) do Học
+                Học viên tốt nghiệp sẽ nhận bằng cử nhân/bằng kỹ sư do Học
                 viện Công nghệ Bưu chính Viễn thông cấp, có giá trị trên cả nước.
-                Với bằng cấp này, sinh viên có thể học tiếp lên Thạc sĩ, Tiến
+                Với bằng cấp này, Học viên có thể học tiếp lên Thạc sĩ, Tiến
                 sĩ... và đủ điều kiện dự thi vào công chức theo đúng quy định của
                 Nhà nước.
               </ListItem>
             </List>
           </Stack>
-          </MotionTop>
-            <AspectRatio h={{ base: "300px", lg: "500px" }} ratio={1} >
-              <iframe src="https://www.youtube.com/embed/IFRjie2XVzE?si=zc9YvKNFQW71Evyy" />
-            </AspectRatio>
-        </SimpleGrid>
-        
-      </Box>
+        </MotionTop>
+        <AspectRatio h={{ base: "300px", lg: "500px" }} ratio={1} >
+          <iframe src="https://www.youtube.com/embed/IFRjie2XVzE?si=zc9YvKNFQW71Evyy" />
+        </AspectRatio>
+      </SimpleGrid>
+
+    </Box>
   );
 };

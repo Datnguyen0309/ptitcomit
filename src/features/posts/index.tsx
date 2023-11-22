@@ -1,17 +1,17 @@
 "use client";
-
 import { Loading } from "@/components/Loading";
-import { Box, Container, Divider, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Divider,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Text,
+} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
-
-const SLiderPosts = dynamic(
-  () => import("./SliderPosts").then((mod) => mod.SLiderPosts),
-  {
-    loading: () => <Loading />,
-  }
-);
 
 const ListPosts = dynamic(
   () => import("./ListPosts").then((mod) => mod.ListPosts),
@@ -28,31 +28,51 @@ export const Posts = () => {
 
   return (
     <Box pb={"40px"}>
-      <Box bg="radial-gradient(circle, rgba(5,70,89,1) 2%, rgba(98,212,245,1) 100%, rgba(252,89,52,1) 100%)">
-        <Container maxW={"6xl"} py="60px">
-          <Heading
-            as="h2"
-            textAlign={"center"}
-            size={"lg"}
-            pb="16px"
-            color={"white"}
-          >
-            Tin tức Đại học Thái Nguyên
-          </Heading>
+      <Box bg={"#F8F9FA"}>
+        <Container maxW={"8xl"}>
+          <Breadcrumb fontWeight="medium" fontSize="md" py={4}>
+            <BreadcrumbItem fontWeight={700}>
+              <BreadcrumbLink color={"facebook.800"} href="/">
+                Trang chủ
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem px={4} fontWeight={600}>
+              <BreadcrumbLink href="/tin-tuc">Tin tức & sự kiện</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Box py={2}>
+            <Text
+              fontSize={{ lg: "4xl", sm: "xl" }}
+              color={"facebook.800"}
+              fontWeight={700}
+              py={4}
+            >
+              TIN TỨC VÀ SỰ KIỆN
+            </Text>
+            <hr
+              style={{
+                background: "#223B67",
+                height: "2px",
+                border: "none",
+                width: "3.5rem",
+              }}
+            />
+          </Box>
         </Container>
       </Box>
-      <Box mt={"32px"}>
-        <Suspense fallback={<Loading />}>
-          <SLiderPosts />
-        </Suspense>
-      </Box>
-
-      <Divider size={"xl"} />
-      <Box pt={"32px"}>
+      <Box
+        bgImage={"url('/bannernews.png')"}
+        bgRepeat={"no-repeat"}
+        bgSize={"cover"}
+        h={{ base: "15vh", lg: "45vh", md: "25vh", sm: "15vh" }}
+      ></Box>
+      <Box pt={"12px"}>
         <Suspense fallback={<Loading />}>
           <ListPosts handleRouter={handleRouter} />
         </Suspense>
       </Box>
+      <Divider size={"xl"} />
     </Box>
   );
 };

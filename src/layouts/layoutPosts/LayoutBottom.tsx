@@ -12,10 +12,10 @@ export const LayoutBottom = ({
   sticky?: string;
 }) => {
   return (
-    <Container maxW={"6xl"}>
-      <SimpleGrid columns={{ base: 2, lg: 3 }} gap={"24px"}>
-        <GridItem colSpan={{ base: 3, lg: 2 }}>{children}</GridItem>
-        <GridItem className="sidebar-posts" colSpan={{ base: 3, lg: 1 }}>
+    <Container maxW={"8xl"}>
+      <SimpleGrid columns={{ base: 1, lg: 4 }} spacing={"8"}>
+        <GridItem colSpan={{ base: 1, lg: 3 }}>{children}</GridItem>
+        <GridItem className="sidebar-posts" colSpan={{ base: 1, lg: 1 }}>
           <Sidebar sticky={sticky} />
         </GridItem>
       </SimpleGrid>

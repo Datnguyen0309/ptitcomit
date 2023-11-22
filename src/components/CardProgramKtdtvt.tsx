@@ -1,7 +1,10 @@
 'use client'
-import { Box, Button, Card, CardBody, CardFooter, Divider, Heading, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import { Box, Button, Card, CardBody, CardFooter, Divider, Heading, ListItem, UnorderedList, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useModal } from './ModalContext';
+
 export const CardProgramKtdtvt = () => {
+    const { isOpen, onOpen, onClose } = useModal();
     return (
         <Box id='sectionHoc' py={{ base: "10" }}>
             <Box maxW={"1728px"} margin={"0 auto"} >
@@ -15,10 +18,10 @@ export const CardProgramKtdtvt = () => {
                     <Box w={"350px"} h={"362px"} margin={"0 auto"} mt={{ lg: "99px" }} ml={{ lg: "246px" }} m={{ md: "24px", base: "12px" }}>
                         <Image
 
-                            src="/program.jpg"
+                            src="/ktdtvtt.png"
                             alt='ptit'
-                            width={500}
-                            height={200}
+                            width={350}
+                            height={362}
                             style={{ height: "auto", width: "100%", objectFit: 'cover' }}
                             priority
                         />
@@ -73,6 +76,7 @@ export const CardProgramKtdtvt = () => {
                                     color: "white",
                                     transform: "scale(0.95)",
                                 }}
+                                onClick={() => !isOpen && onOpen && onOpen()}
                             >
                                 Nhận lộ trình học
                             </Button>

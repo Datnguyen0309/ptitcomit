@@ -1,9 +1,12 @@
 'use client'
-import { Box, Button, Card, CardBody, CardFooter, Divider, Heading, ListItem, Text, UnorderedList, VStack } from '@chakra-ui/react';
+import { Box, Button, Card, CardBody, CardFooter, Divider, Heading, ListItem, UnorderedList, VStack } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useModal } from './ModalContext';
+
 export const CardProgramQtkd = () => {
+    const { isOpen, onOpen, onClose } = useModal();
     return (
-        <Box id='sectionHoc' py={{base:"10"}}>
+        <Box id='sectionHoc' py={{ base: "10" }}>
             <Box maxW={"1728px"} margin={"0 auto"} >
                 <Card
                     display="flex"
@@ -15,10 +18,10 @@ export const CardProgramQtkd = () => {
                     <Box w={"350px"} h={"362px"} margin={"0 auto"} mt={{ lg: "99px" }} ml={{ lg: "246px" }} m={{ md: "24px", base: "12px" }}>
                         <Image
 
-                            src="/program.jpg"
+                            src="/qtkdd.png"
                             alt='ptit'
-                            width={500}
-                            height={200}
+                            width={350}
+                            height={362}
                             style={{ height: "auto", width: "100%", objectFit: 'cover' }}
                             priority
                         />
@@ -44,7 +47,7 @@ export const CardProgramQtkd = () => {
                                 padding={{ lg: "15px", base: "6px" }}
                                 marginLeft={{ lg: "184px", base: "" }}
                             />
-                            <Heading color={"#1E2456"} fontWeight={"bold"} fontSize={{ base: "18px", md: "18px", lg: "24px" }} pt={{lg:"60px" ,base:"15px"}}>
+                            <Heading color={"#1E2456"} fontWeight={"bold"} fontSize={{ base: "18px", md: "18px", lg: "24px" }} pt={{ lg: "60px", base: "15px" }}>
                                 Kiến thức giáo dục đại cương: Tổng 47 tín
                             </Heading>
                             <UnorderedList textAlign={"left"} spacing={4}>
@@ -79,6 +82,7 @@ export const CardProgramQtkd = () => {
                                     color: "white",
                                     transform: "scale(0.95)",
                                 }}
+                                onClick={() => !isOpen && onOpen && onOpen()}
                             >
                                 Nhận lộ trình học
                             </Button>

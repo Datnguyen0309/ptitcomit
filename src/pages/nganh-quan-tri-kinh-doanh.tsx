@@ -17,8 +17,8 @@ const Page = () => {
   return (
     <>
       <NextSeo
-        title="Ngành công nghệ thông tin - Đại học Thái Nguyên"
-        description="Ngành công nghệ thông tin - Đại học Thái Nguyên, thông tin ngành công nghệ thông tin Đại học Thái nguyên"
+        title="Ngành quản trị kinh doanh - Đại học Thái Nguyên"
+        description="Ngành quản trị kinh doanh - Đại học Thái Nguyên, thông tin ngành quản trị kinh doanh Đại học Thái nguyên"
       />
       <Qtkd />
       <ErrorBoundary fallback={<h1>Lỗi server</h1>}>

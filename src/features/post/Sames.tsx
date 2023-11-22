@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { formatDate } from "@/ultil/date";
 
 export const SamePosts = ({ catId, id }: { catId?: string; id?: string }) => {
   const [samePosts, setSamePosts] = useState<any[]>([]);
@@ -38,7 +39,7 @@ export const SamePosts = ({ catId, id }: { catId?: string; id?: string }) => {
 
   return (
     <>
-      <Divider pt={"32px"}  />
+      <Divider pt={"32px"} />
       <Box pt={"20px"}>
         <HStack justifyContent={"space-between"} pb={"16px"}>
           <Heading as={"h3"} size={"md"}>
@@ -54,16 +55,17 @@ export const SamePosts = ({ catId, id }: { catId?: string; id?: string }) => {
           </Button>
         </HStack>
 
-        <SimpleGrid columns={{ base: 1, md: 3, lg: 3 }} gap={"20px"} py={5}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={"20px"}>
           {samePosts.map((postCat, index) => {
             if (index < 3)
               return (
                 <GridItem key={index}>
                   <CardBlog
+                    date={postCat?.date ? formatDate(postCat.date) : ""}
                     title={postCat?.title?.rendered}
                     desc=""
                     image={postCat?.featured_image || ""}
-                    path={postCat.slug}
+                    path={`/tin-tuc/${postCat.slug}`}
                   />
                 </GridItem>
               );

@@ -1,30 +1,19 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  HStack,
-  Heading,
-  Img,
-  Stack,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
+import { Box, HStack, Img, Text, SimpleGrid, GridItem } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import xss from "xss";
+import { clean } from "@/lib/sanitizeHtml";
 
 export const CardBlogVert = ({
   title,
   desc,
+  date,
   tag,
   image,
   path,
 }: {
+  date?: string;
   title: string;
   desc: string;
   tag: string;
@@ -33,75 +22,62 @@ export const CardBlogVert = ({
 }) => {
   const hasSSL = process.env.NEXT_PUBLIC_HAS_SSL || "true";
 
-  const [isMounted, setMount] = useState(false);
-
-  useEffect(() => {
-    setMount(true);
-  }, []);
-
   return (
-    <Card
-      direction={{ base: "column", sm: "row" }}
-      overflow="hidden"
-      variant="outline"
-      rounded={"sm"}
-      as={Link}
-      href={path ?? "#"}
-    >
-      <Box flex={1}>
-        <Box m={"12px 24px"} rounded={"sm"} overflow={"hidden"}>
-          {hasSSL === "true" && (
-            <Image
-              width={320}
-              height={200}
-              src={image || `/blog.jpeg`}
-              alt={title}
-            />
-          )}
-
-          {hasSSL === "false" && (
-            <Img src={image || `/blog.jpeg`} alt={title} />
-          )}
-        </Box>
-      </Box>
-
-      <Stack flex={1}>
-        <CardBody pb={0}>
+    <Box py={4} as={Link} href={path ?? "#"} border={"none"}>
+      <SimpleGrid columns={3} spacing={2}>
+        <GridItem
+          colSpan={1}
+          display={"flex"}
+          justifyContent={"center"}
+          objectFit={"cover"}
+        >
+          <Box pos={"relative"}>
+            {hasSSL === "true" && (
+              <Image
+                width={130}
+                height={110}
+                src={image || `/blog.jpeg`}
+                alt={title}
+              />
+            )}
+            {hasSSL === "false" && (
+              <Img src={image || `/blog.jpeg`} alt={title} />
+            )}
+          </Box>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Text
+            fontSize={"14px"}
+            fontWeight={500}
+            _hover={{ color: "red.500" }}
+            transition={"all ease .3s"}
+            css={{
+              display: "-webkit-box",
+              WebkitLineClamp: "2",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+            dangerouslySetInnerHTML={{ __html: clean(title) }}
+          />
           <HStack>
-            <Tag
-              size={"xl"}
-              variant="solid"
-              colorScheme="red"
-              fontSize={"sm"}
-              p="6px"
-              whiteSpace={"nowrap"}
+            <Text
+              p={1}
+              align={"center"}
+              fontSize={"10px"}
+              w={"-webkit-fit-content"}
+              bg={"black"}
+              color={"white"}
+              gap={0.1}
             >
               {tag}
-            </Tag>
-            <Heading
-              as={"h4"}
-              size="sm"
-              _hover={{ color: "red.500" }}
-              transition={"all ease .3s"}
-              dangerouslySetInnerHTML={{ __html: xss(title) }}
-            />
+            </Text>
+            <Text p={1} align={"center"} fontSize={"xs"} color={"gray.500"}>
+              {date?.slice(5)}
+            </Text>
           </HStack>
-
-          {isMounted && (
-            <Text
-              color={"gray.500"}
-              fontSize={".8rem"}
-              dangerouslySetInnerHTML={{ __html: desc }}
-            />
-          )}
-        </CardBody>
-
-        <CardFooter pt={0}>
-          <Button variant="link" colorScheme="red">
-            Xem thêm
-          </Button>
-        </CardFooter>
-      </Stack>
-    </Card>
+        </GridItem>
+      </SimpleGrid>
+    </Box>
   );
 };

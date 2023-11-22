@@ -1,40 +1,40 @@
 "use client";
-
+import { FormInputs } from "@/components/FormInputs";
 import { useSize } from "@/hooks/useSizeWindow";
 import { menus } from "@/router";
 import {
+  Box,
   Collapse,
   Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   Flex,
+  HStack,
   Icon,
   IconButton,
   Stack,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRef } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { BsChevronDown } from "react-icons/bs";
-import { HeaderTop } from "./HeaderTop";
+import { BsChevronDown, BsYoutube } from "react-icons/bs";
+import { FaFacebook } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
+import { SocialButton } from "./HeaderTop";
 import { Logo } from "./Logo";
-
 interface INavItem {
   title: string;
   childs?: Array<{ title: string; childs?: Array<{}>; path?: string }>;
   path?: string;
   onClose: () => void;
 }
-
 export const MobileNavItem = ({ title, childs, path, onClose }: INavItem) => {
   const { isOpen, onToggle } = useDisclosure();
-
   return (
     <Stack spacing={4} onClick={childs && onToggle}>
       <Flex
@@ -45,7 +45,7 @@ export const MobileNavItem = ({ title, childs, path, onClose }: INavItem) => {
           textDecoration: "none",
         }}
         fontWeight={600}
-        color={"gray.600"}
+        color={"white"}
       >
         <Link
           href={path ?? "#"}
@@ -71,7 +71,7 @@ export const MobileNavItem = ({ title, childs, path, onClose }: INavItem) => {
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
-          borderColor={"gray.200"}
+          borderColor={"white"}
           align={"start"}
         >
           {childs &&
@@ -81,7 +81,7 @@ export const MobileNavItem = ({ title, childs, path, onClose }: INavItem) => {
                 style={{
                   paddingTop: "8px",
                   paddingBottom: "8px",
-                  fontWeight: "600",
+                  fontWeight: "500",
                   width: "100%",
                 }}
                 href={child.path ?? "/"}
@@ -95,75 +95,87 @@ export const MobileNavItem = ({ title, childs, path, onClose }: INavItem) => {
     </Stack>
   );
 };
-
 export const MobileNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
-
   const { size } = useSize();
   const { width } = size;
-
   return (
     <>
-      <IconButton
-        w={"50px"}
-        h={"50px"}
-        ref={btnRef}
-        onClick={onOpen}
-        icon={<Icon as={AiOutlineMenu} w={"24px"} h={"24px"} />}
-        variant={"ghost"}
-        aria-label={"Toggle Navigation"}
-      />
-      <Drawer
-        isOpen={width < 992 ? isOpen : false}
-        placement="left"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>
-            <Flex justify={"center"}>
-              <Logo />
-            </Flex>
-          </DrawerHeader>
-          <Divider />
+      <div>
+        <IconButton
+          w={"50px"}
+          h={"50px"}
+          ref={btnRef}
+          onClick={onOpen}
+          icon={<Icon as={AiOutlineMenu} w={"24px"} h={"24px"} />}
+          variant={"ghost"}
+          aria-label={"Toggle Navigation"}
+        />
+        <Drawer
+          isOpen={width < 992 ? isOpen : false}
+          placement="left"
+          onClose={onClose}
+          finalFocusRef={btnRef}
+          size={"xs"}
+        >
+          <DrawerOverlay />
+          <DrawerContent maxH={"100vh"}>
+            <DrawerCloseButton />
+            <DrawerHeader>
+              <Flex onClick={onClose}>
+                <Logo />
+              </Flex>
+            </DrawerHeader>
+            <Divider />
 
-          <DrawerBody>
-            <Stack bg={"white"} p={4} display={{ lg: "none" }}>
-              {menus.map((navItem) => (
-                <MobileNavItem
-                  key={navItem.title}
-                  {...navItem}
-                  onClose={onClose}
-                />
-              ))}
-            </Stack>
-          </DrawerBody>
-          <Divider />
-          <DrawerFooter
-            pos={"relative"}
-            _before={{
-              content: "''",
-              width: "5e3px",
-              height: "100%",
-              backgroundImage:
-                "-webkit-gradient(linear,left top,left bottom,from(#004685),to(#004956e6));",
-              position: "absolute",
-              top: 0,
-              right: "36%",
-              zIndex: -1,
-              transform: "skew(-30deg)",
-              WebkitTransformOrigin: "left bottom",
-            }}
-            py="24px"
-            px={"12px"}
-          >
-            <HeaderTop />
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+            <DrawerBody bg={"red.700"} className="test">
+              <Stack
+                className="test2"
+                color={"white"}
+                p={4}
+                display={{ lg: "none" }}
+              >
+                {menus.map((navItem) => (
+                  <MobileNavItem
+                    key={navItem.title}
+                    {...navItem}
+                    onClose={onClose}
+                  />
+                ))}
+              </Stack>
+              <Box onSubmit={onClose}>
+                <FormInputs />
+              </Box>
+
+              <HStack py={4} spacing={2} display={{ base: "flex", lg: "flex" }}>
+                <SocialButton
+                  bagr="transparent"
+                  label={"Facebook"}
+                  href={"https://www.facebook.com/bcvt.edu.vn"}
+                >
+                  <FaFacebook color="white" />
+                </SocialButton>
+                <SocialButton
+                  bagr="transparent"
+                  label={"Zalo"}
+                  href={"https://zalo.me/0846770022"}
+                >
+                  <SiZalo color="white" />
+                </SocialButton>
+                <SocialButton
+                  bagr="transparent"
+                  label={"Youtube"}
+                  href={"https://www.youtube.com/@bcvt"}
+                >
+                  <BsYoutube color="white" />
+                </SocialButton>
+              </HStack>
+            </DrawerBody>
+            <Divider />
+          </DrawerContent>
+        </Drawer>
+      </div>
     </>
   );
 };

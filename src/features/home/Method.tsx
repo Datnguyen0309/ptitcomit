@@ -1,13 +1,14 @@
+import { useModal } from "@/components/ModalContext";
 import {
   Box,
   Container,
   Divider,
   Heading,
-  Link,
   SimpleGrid,
-  Text
+  Text,
+  useDisclosure
 } from "@chakra-ui/react";
-
+import Link from "next/link";
 interface FeatureProps {
   title: string;
   text: string;
@@ -16,6 +17,7 @@ interface FeatureProps {
 }
 
 const Feature = ({ title, text, link, linkText }: FeatureProps) => {
+  const { isOpen, onOpen, onClose } = useModal();
   return (
     <Box
       w={{ base: "100%", md: "100%", lg: "100%" }}
@@ -32,11 +34,11 @@ const Feature = ({ title, text, link, linkText }: FeatureProps) => {
       <Text color="gray.600" minHeight="118px">
         {text}
       </Text>
-      <Link href={link} color="red" mt="25px" textAlign="center">
-  <Text color="#00338d !important" fontWeight="bold" borderRadius="3px" borderWidth="1px" borderColor="red"  padding="15px 0">
-    {linkText}
-  </Text>
-</Link>
+      <Link href={link} color="red" onClick={() => !isOpen && onOpen && onOpen()}>
+        <Text color="#00338d !important" fontWeight="bold" borderRadius="3px" borderWidth="1px" borderColor="red" padding="15px 0" textAlign={"center"}>
+          {linkText}
+        </Text>
+      </Link>
 
     </Box>
   );
@@ -46,25 +48,25 @@ const MethodDks = [
   {
     title: "Xét tuyển thẳng",
     text: "Đối với thí sinh đã có bằng cao đẳng, đại học chính quy.",
-    link: "/nganh-cong-nghe-thong-tin",
+    link: "/#",
     linkText: "NỘP HỌC BẠ ONLINE",
   },
   {
     title: "Xét tuyển bằng điểm thi THPT",
     text: "Sử dụng kết quả thi trung học phổ thông 2022, 2023.",
-    link: "/",
+    link: "/#",
     linkText: "ĐĂNG KÍ TƯ VẤN",
   },
   {
     title: "Xét tuyển bằng học bạ",
     text: "Sử dụng kết quả 3 năm học THPT với các môn tương ứng với tổ hợp môn xét tuyển.",
-    link: "/",
+    link: "/#",
     linkText: "ĐĂNG KÍ TƯ VẤN",
   },
 
 ];
 
- export const MethodDk = () => {
+export const MethodDk = () => {
   return (
     <Box bg="#f6f6f7">
       <Container maxW="1728px" py={{ base: 0, md: 0, lg: 20 }}>

@@ -26,7 +26,7 @@ export const Categoty = () => {
   return (
     <Box py={"48px"}>
       <Container maxW="1728px">
-        <Heading textAlign={"center"} mb={"59px"}> Các ngành đào tạo</Heading>
+        <Heading textAlign={"center"} mb={"59px"}> Các ngành học</Heading>
         <SimpleGrid spacing={"5"} columns={{ base: 2, md: 2, lg: 3 }}>
           {categotys.map((categoty, index) => (
             <CardCat

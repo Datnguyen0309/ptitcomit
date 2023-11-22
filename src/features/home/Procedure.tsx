@@ -1,4 +1,4 @@
-import React from "react";
+import { useModal } from "@/components/ModalContext";
 import {
   Box,
   Container,
@@ -11,16 +11,16 @@ import {
   Text
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { FcMultipleDevices, FcPhone, FcSearch } from "react-icons/fc";
+import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
-
+import { FcMultipleDevices, FcPhone, FcSearch } from "react-icons/fc";
 
 const featuresData = [
   {
     icon: <Icon as={FcSearch} w="125%" h="auto" />,
     title: "Chọn ngành bạn yêu thích",
     text: "Khám phá và lựa chọn các ngành học hấp dẫn của E-PTIT để khám phá tiềm năng của bạn",
-    link: "/nganh-cong-nghe-thong-tin",
+    link: "/nganh-dao-tao",
     linkText: "XEM CÁC NGÀNH HỌC",
   },
   {
@@ -80,6 +80,8 @@ interface FeatureProps {
 }
 
 const Feature = ({ title, text, icon, link, linkText }: FeatureProps) => {
+  const { isOpen, onOpen, onClose } = useModal();
+
   return (
     <Stack bg={"#FFF"} w="100%" minH={"340px"} p={{ base: "10px", md: "20px", lg: "30px" }} spacing={7} >
       <Flex
@@ -96,9 +98,12 @@ const Feature = ({ title, text, icon, link, linkText }: FeatureProps) => {
       </Flex>
       <Text fontWeight={600} fontSize={{ base: "16px", md: "20px", lg: "24px" }}> {title}</Text>
       <Text color={"gray.600"}>{text}</Text>
-      <Link href={link} passHref>
-        <Text color={"#00338d !important"} textDecoration={"underline"} fontWeight={"bold"}>{linkText}</Text>
+      <Link href={link} onClick={() => !isOpen && onOpen && onOpen()} >
+        <Text color={"#00338d !important"} textDecoration={"underline"} fontWeight={"bold"} >{linkText}</Text>
       </Link>
+
     </Stack>
   );
 };
+
+

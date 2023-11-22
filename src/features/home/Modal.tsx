@@ -1,7 +1,4 @@
 import {
-  Grid,
-  GridItem,
-  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,12 +6,16 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { useContext } from "react";
+
 interface IModalBase {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   form: ReactNode;
 }
+
+
 export const ModalBase = (props: IModalBase) => {
   const { onClose, isOpen, form } = props;
   return (
